@@ -6,7 +6,8 @@ import { CustomerData } from "./interfaces/CustomerData"
 import { PaymentData } from "./interfaces/PaymentData"
 import { SnackData } from "./interfaces/SnackData"
 
-import CheckoutService from "./services/checkout"
+import CheckoutService from "./services/CheckoutService"
+
 
 dotenv.config()
 
@@ -68,6 +69,8 @@ app.post("/checkout", async (req: CheckoutRequest, res: Response) => {
 
   const checkoutService = new CheckoutService()
   checkoutService.process(cart, customer, payment)
+
+  res.send({ message: "Checkout completed"})
 })
 
 app.listen(port, () => {
