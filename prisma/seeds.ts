@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 const snacks = [
   {
@@ -179,20 +179,20 @@ const snacks = [
     price: 10,
     image: "https://i.imgur.com/0TWnEI7.jpg",
   },
-]
+];
 
 async function main() {
   await prisma.snack.createMany({
     data: snacks,
     skipDuplicates: true,
-  })
+  });
 }
 
 main()
   .catch((error) => {
-    console.error(error)
-    process.exit(1)
+    console.error(error);
+    process.exit(1);
   })
   .finally(async () => {
-    await prisma.$disconnect()
-  })
+    await prisma.$disconnect();
+  });
